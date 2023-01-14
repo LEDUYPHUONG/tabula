@@ -1,0 +1,210 @@
+//  tạo biến
+// font
+    $font-primary: 'Montserrat';
+    $font-second: 'Roboto';
+
+// bgcolor
+    $c1-bg-primary:#b61984;
+    $c2-bg-white:#fff;
+    $c2-bg-pink: #dcd1f0;
+    $c3-bg-red2:#aa017e;
+// text color
+    $c1-text-primary: #b61984;
+    $c2-text-dark: #000;
+    $c3-text-white: #fff;
+// fontweight
+    $text-smal: 400;
+    $text-semiBold: 500;
+    $text-bold: 600;
+    $text-bigBold: 700;
+// text (fontsize,fontweight,color)
+    $text-ssm: 11px;
+    $text-sm: 14px;
+    $text-sml: 15px;
+    $text-md: 17px;
+    $text-xl: 23px;
+    $text-xxl: 38px;
+    $text-xxxl: 57px;
+//mixin(hàm trong js)
+@mixin text ($c:$c2-text-dark,$fw:$text-smal,$fz:$text-sm) {
+    color: $c;
+    font-weight: $fw;
+    font-size: $fz ;
+}
+@mixin button ($bg,$pd,$b,$br,$fz,$fw,$c,$bg-hover,$c-hover) {
+    background: $bg;
+    padding: $pd;
+    border: $b;
+    border-radius: $br;
+    // box-shadow: 0 3px 6px #c9d8f4;
+    cursor: pointer;
+    font-size: $fz;
+    font-weight: $fw;
+    color: $c;
+    transition: all 0.5s ease;
+    &:hover{
+        background-color: $bg-hover;
+        color: $c-hover;
+    }
+}
+@mixin icon-hover (){
+    &:hover{
+        color: $c1-bg-primary;
+    }
+}
+@mixin text-hover (){
+    &:hover{
+        color: $c1-bg-primary;
+    }
+}
+@mixin img-hover-expan {
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+@mixin item-hover-boxShadow {
+    &:hover{
+        box-shadow: rgb(226, 235, 252) 6px 6px 12px,  rgb(255, 255, 255) -6px -6px 12px;
+    }
+
+}
+// button
+.button1{
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include button($c1-bg-primary, 10px 30px, 2px solid $c1-bg-primary, 50px, $text-sm, $text-bold, $c2-bg-white, $c3-text-white, $c1-bg-primary )
+    }
+}
+.button2{
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include button($c1-bg-primary, 10px 50px, 2px solid $c1-bg-primary, 50px, $text-sm, $text-bold, $c2-bg-white, $c3-text-white, $c1-bg-primary )
+    }
+}
+.button3{
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include button($c2-bg-white, 10px 30px, 2px solid $c2-bg-white, 50px, $text-sm, $text-bold, $c1-bg-primary, $c1-bg-primary, $c3-text-white )
+    }
+}
+
+
+// input, select, textarea
+input{
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+// select
+/*the container must be positioned relative:*/
+.custom-select {
+    position: relative;
+    font-family: Arial;
+}
+
+.select-selected {
+    background-color: $c2-bg-white;
+}
+
+    /*style the arrow inside the select element:*/
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 20px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: $c1-bg-primary transparent transparent transparent;
+}
+
+    /*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent $c1-bg-primary transparent;
+    top: 10px;
+}
+
+    /*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+    color: $c2-text-dark;
+    width: 100%;
+    padding: 8px 16px;
+    // border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+}
+
+    /*style items (options):*/
+.select-items {
+    position: absolute;
+    background-color: $c2-bg-white;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border: 1px solid  rgba(0, 0, 0, 0.1);
+}
+
+    /*hide the items when the select box is closed:*/
+    .select-hide {
+    display: none;
+}
+
+    .select-items div:hover, .same-as-selected {
+    background-color: $c2-bg-white;
+    color: $c1-text-primary;
+}
+    .custom-select select {
+    display: none; /*hide original SELECT element:*/
+}
+  
+
+
+
+// textarea
+textarea{
+    border: none;
+    outline: none;
+}
+.boderInputSelectTextarea{
+    
+    border: 1px solid rgb(212, 209, 209);
+    background: #fff;
+    padding: 15px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+
+// ul,li
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li{
+        a{
+            color: $c3-text-white;
+        }
+    }
+}
+
+.title{
+    @include text ($c3-text-white, $text-bigBold, $text-xl);
+}
+::placeholder{
+    color: $c2-text-dark;
+    font-family: $font-second;
+}
+
+
+
+
+
